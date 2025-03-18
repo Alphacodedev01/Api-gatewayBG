@@ -18,8 +18,15 @@ fastify.register(require('./routes/payments'));
 
 const start = async () => {
   try {
-    await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
-    fastify.log.info(`API Gateway listening on ${fastify.server.address().port}`);
+    const port = process.env.PORT || 3000;
+    const host = '0.0.0.0';
+
+    await fastify.listen({ 
+      port: port, 
+      host: host 
+    });
+    
+    console.log(`Server is running on ${host}:${port}`);
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
