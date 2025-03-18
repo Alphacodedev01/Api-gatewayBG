@@ -7,6 +7,24 @@ fastify.register(cors, {
   origin: true
 });
 
+// Ruta raíz
+fastify.get('/', async (request, reply) => {
+  return {
+    status: 'online',
+    message: 'BeautiGo API Gateway is running',
+    version: '1.0.0',
+    endpoints: [
+      '/api/auth',
+      '/api/users',
+      '/api/business',
+      '/api/geo',
+      '/api/booking',
+      '/api/notifications',
+      '/api/payments'
+    ]
+  };
+});
+
 // Registrar rutas para cada microservicio
 fastify.register(require('./routes/auth'));
 fastify.register(require('./routes/users'));
