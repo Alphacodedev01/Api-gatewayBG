@@ -2,7 +2,7 @@ const fastify = require('fastify')({ logger: true });
 const cors = require('@fastify/cors');
 require('dotenv').config();
 
-// Registrar HPTA
+// Registrar CORS
 fastify.register(cors, {
   origin: true
 });
